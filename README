@@ -1,0 +1,28 @@
+Archiver
+©2002 by Marcin 'Shard' Konicki
+shard@sleptdoll.org
+
+Archiver is ment to be Zip'O'Matic replacement.
+It doesn't have bugs which i saw in BeOS' default application for zipping files.
+It also supports other compression formats than zip.
+
+You can drag & drop files on it's window to create archive - just like in Zip'O'Matic.
+
+Archiver doesn't compress files itself, it uses commandline tools for that. So You have to have zip tool to make zip archives (it comes with BeOS).
+
+To show settings run it without selecting files in Tracker.
+
+
+To make Archiver use other compression tool You have to add line in "archiver.rules" file.
+That line must have:
+	Name visible to user in settings
+	variation name for that rule (for example there is more than one setting for zip)
+	mime type of compressed file
+	file extension added to newly created archive file (i.e. ".zip")
+	path to command line compression tool ("/boot/beos/bin.zip")
+	options for compression tool (i.e. "-9" for maximum zip compression); here You can add special option "FILENAME". Archiver will put name of archive to be created instead of it.
+
+Each of these must be separated from the one before with TAB sign, even if there is nothing there (in default archiver.rules file there is only one rule for tar.gz files, so it doesn't contain variation name, but it contains TAB there). EACH option for compression tool also must be separated from others with TAB.
+
+
+Shard

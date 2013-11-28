@@ -1,0 +1,3 @@
+[2002-10-27]
+- FIXED: in sources line 210 char text to char *text = new text. THX to Brian Francis.
+- FIXED:in sources main now returns 0 (not needed but cleaner ;]). THX to Brian Francis.

@@ -1,0 +1,4 @@
+ZIP compressed file	maximum compression	application/x-zip-compressed	.zip	/boot/beos/bin/zip	-9	-r	-y	FILENAME
+ZIP compressed file	fast compression	application/x-zip-compressed	.zip	/boot/beos/bin/zip	-1	-r	-y	FILENAME
+TAR BZip2 compressed file		application/x-bzip2	.tar.bz2	/boot/beos/bin/tar	-c	-f	FILENAME	--use-compress-program	bzip2
+TAR GZip compressed file		application/x-gzip	.tar.gz	/boot/beos/bin/tar	-c	-f	FILENAME	-z
