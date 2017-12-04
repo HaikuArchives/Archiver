@@ -51,8 +51,6 @@ SOFTWARE
 #include <View.h>
 #include <Window.h>
 
-#include <be/add-ons/tracker/TrackerAddon.h>
-
 //----------------------------------------------------------------------------
 //
 //	Define
