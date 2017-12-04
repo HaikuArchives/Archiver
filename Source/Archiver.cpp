@@ -713,7 +713,7 @@ ASettingsView::LoadRules()
 		
 	// make path to rules file
 	BPath path;
-	if( find_directory( B_COMMON_ETC_DIRECTORY, &path) != B_OK)
+	if( find_directory( B_SYSTEM_ETC_DIRECTORY, &path) != B_OK)
 	{
 		path.SetTo( ARCHIVER_RULES_FILE_PATH);
 		path.Append( ARCHIVER_RULES_FILE);
