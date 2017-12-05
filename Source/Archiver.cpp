@@ -41,6 +41,8 @@ SOFTWARE
 
 extern char	**environ;
 
+static char zipCmd[] = "/bin/zip";
+
 //----------------------------------------------------------------------------
 //
 //	Functions :: ArchiverView
@@ -771,15 +773,18 @@ ASettingsView::LoadRules()
 		Rules->AddString( "rule[0]", "maximum compression");			// variation
 		Rules->AddString( "rule[0]", "application/x-zip-compressed");	// mime
 		Rules->AddString( "rule[0]", ".zip");							// extension
-		Rules->AddString( "rule[0]", "/boot/beos/bin/zip");				// executable
+		Rules->AddString( "rule[0]", zipCmd);							// executable
 		Rules->AddString( "rule[0]", "-9");
 		Rules->AddString( "rule[0]", "-r");
 		Rules->AddString( "rule[0]", "-y");
 
 		if( file.SetTo( path.Path(), B_READ_WRITE | B_CREATE_FILE) == B_OK)
 		{
-			char default_rule[] = "ZIP compressed file\tmaximum compression\tapplication/x-zip-compressed\t.zip\t/boot/beos/bin/zip\t-9\t-r\t-y\t"ARCHIVER_SETTINGS_FILENAME"\n";
+			char default_rule[] = "ZIP compressed file\tmaximum compression\tapplication/x-zip-compressed\t.zip\t";
+			char zipArgs[] = "\t-9\t-r\t-y\t"ARCHIVER_SETTINGS_FILENAME"\n";
 			file.Write( (char*)default_rule, sizeof( default_rule)-1);
+			file.Write( (char*)zipCmd, sizeof( zipCmd)-1);
+			file.Write( (char*)zipArgs, sizeof( zipArgs)-1);
 		}
 	}
 
@@ -1216,7 +1221,7 @@ ArchiverWindow::LoadDefaultSettings()
 	aSettings->AddString( ARCHIVER_SETTINGS_FILE_DESC2, "maximum compression");
 	aSettings->AddString( ARCHIVER_SETTINGS_FILE_MIME, "application/x-zip-compressed");
 	aSettings->AddString( ARCHIVER_SETTINGS_FILE_EXT, ".zip");
-	aSettings->AddString( ARCHIVER_SETTINGS_OPTION, "/boot/beos/bin/zip");
+	aSettings->AddString( ARCHIVER_SETTINGS_OPTION, zipCmd);
 	aSettings->AddString( ARCHIVER_SETTINGS_OPTION, "-9");
 	aSettings->AddString( ARCHIVER_SETTINGS_OPTION, "-r");
 	aSettings->AddString( ARCHIVER_SETTINGS_OPTION, "-y");
